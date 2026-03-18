@@ -13,10 +13,7 @@ if not DATABASE_URL:
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# SQLAlchemy models inherit from this Base class
+# Links the python model definitions to the engine allowing create_all() to build the tables in PostgreSQL
 class Base(DeclarativeBase):
-    """
-    All SQLAlchemy models inherit from this Base class.
-    This is what links our Python model definitions to the engine above,
-    allowing create_all() to build the real tables in PostgreSQL.
-    """
     pass
